@@ -6,7 +6,7 @@ namespace s32866_apbd_c3.Config;
 
 public class GlobalState
 {
-    public List<User> Users = new List<User>();
-    public List<Equipment> Equipments = new List<Equipment>();
-    public List<Rental> Rentals = new List<Rental>();
+    public static List<User> Users = new List<User>();
+    public static List<Equipment> Equipments = new List<Equipment>();
+    public static List<Rental> Rentals = new List<Rental>();
 }

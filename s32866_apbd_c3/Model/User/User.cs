@@ -9,7 +9,7 @@ public class User
     public string Surname { get; }
     public UserType UserType { get; }
 
-    protected User(string name, string surname, UserType type)
+    public User(string name, string surname, UserType type)
     {
         Identificator = SetIdentyficator();
         Name = name;

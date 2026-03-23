@@ -21,17 +21,19 @@ public class Rental
         returnDay = rentedDay + GlobalSettings.RentalTime;
         Renter = user;
         Device = equipment;
+        Device.Available = false;
     }
 
     public void Return()
     {
+        Device.Available = true;
         returnedDay = GlobalSettings.CurrentDay;
         if (returnedDay - returnDay > 0)
         {
             LateFee = GlobalSettings.LateFeePerDay * (returnedDay - returnDay);
             return;
         }
-
+        
         LateFee = 0;
     }
 }
