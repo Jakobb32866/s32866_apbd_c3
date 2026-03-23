@@ -4,9 +4,9 @@ public class Equipment
 {
     private static int IdentificatorSetter = 0;
     
-    protected int Identificator { get; }
-    protected string Name { get; }
-    protected bool Available { get; set; }
+    public int Identificator { get; }
+    public string Name { get; }
+    public bool Available { get; set; }
 
     protected Equipment(string name)
     {
