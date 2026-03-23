@@ -1,20 +1,22 @@
-namespace s32866_apbd_c3.Model;
+namespace s32866_apbd_c3.Model.User;
 
-public class Equipment
+public abstract class User
 {
     private static int IdentificatorSetter = 0;
     
     public int Identificator { get; }
     public string Name { get; }
-    public bool Available { get; set; }
+    public string Surname { get; }
+    public int MaxRentals { get; }
 
-    protected Equipment(string name)
+    protected User(string name, string surname, int maxRentals)
     {
         Identificator = SetIdentyficator();
         Name = name;
-        Available = true;
+        Surname = surname;
+        MaxRentals = maxRentals;
     }
-
+    
     private int SetIdentyficator()
     {
         IdentificatorSetter++;
