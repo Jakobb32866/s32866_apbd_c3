@@ -118,7 +118,7 @@ public static class UI
                     Console.WriteLine(UserServices.ShowActiveUserRentals(int.Parse(Console.ReadLine())));
                     break;
                 case "14":
-                    Console.WriteLine(UserServices.ShowOverdueUserRentals());
+                    Console.WriteLine(UserServices.ShowOverdueRentals());
                     break;
                 case "15":
                     GlobalSettings.NextDay();
