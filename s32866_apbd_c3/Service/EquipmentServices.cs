@@ -53,7 +53,7 @@ public class EquipmentServices
         
         if (equipment == null)
         {
-            //TODO!!! THROW UI ERR
+            Console.WriteLine("Błąd: Sprzęt nie istnieje");
             return;
         }
         
@@ -66,7 +66,7 @@ public class EquipmentServices
         
         if (equipment == null)
         {
-            //TODO!!! THROW UI ERR
+            Console.WriteLine("Błąd: Sprzęt nie istnieje");
             return;
         }
         

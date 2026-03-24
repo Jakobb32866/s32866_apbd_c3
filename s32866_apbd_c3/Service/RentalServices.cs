@@ -14,31 +14,31 @@ public class RentalServices
         Equipment equipment = GlobalState.Equipments.Find(e => e.Identificator == equipmentId);
         if (user == null)
         {
-            //TODO!!! THROW UI ERR
+            Console.WriteLine("Błąd: Użytkownik nie istnieje");
             return;
         }
         
         if (equipment == null)
         {
-            //TODO!!! THROW UI ERR
+            Console.WriteLine("Błąd: Sprzęt nie istnieje");
             return;
         }
 
         if (equipment.Avaiability == EquipmentStatus.Rented)
         {
-            //TODO!!! THROW UI ERR
+            Console.WriteLine("Błąd: Sprzęt jest aktualnie wypożyczony");
             return;
         }
         
         if (equipment.Avaiability == EquipmentStatus.inService)
         {
-            //TODO!!! THROW UI ERR
+            Console.WriteLine("Błąd: Sprzęt jest aktualnie w serwisie");
             return;
         }
 
         if (IsOverLimit(user))
         {
-            //TODO!!! THROW UI ERR
+            Console.WriteLine("Błąd: Użytkownik osiągnął limit dozwolonych wyporzyczeń");
             return;
         }
         
@@ -50,7 +50,7 @@ public class RentalServices
         Equipment equipment = GlobalState.Equipments.Find(e => e.Identificator == equipmentId);
         if (equipment == null)
         {
-            //TODO!!! THROW UI ERR
+            Console.WriteLine("Błąd: Sprzęt nie istnieje");
             return;
         }
         
@@ -59,7 +59,7 @@ public class RentalServices
             if (!r.Device.Equals(equipment) && !r.returnedDay.Equals(null))
             {
                 r.Return();
-                //TODO!! THROW UI FEE
+                Console.WriteLine("Kara: " + r.LateFee);
             }
         }
     }

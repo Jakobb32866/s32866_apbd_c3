@@ -14,10 +14,4 @@ public static class GlobalSettings
     {
         CurrentDay++;
     }
-
-    //TODO
-    public static void UpdateMaxRentals()
-    {
-        
-    }
 }
