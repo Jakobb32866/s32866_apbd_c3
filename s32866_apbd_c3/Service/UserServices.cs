@@ -46,7 +46,7 @@ public class UserServices
         StringBuilder result = new StringBuilder();
         foreach (Rental r in GlobalState.Rentals)
         {
-            if (r.returnDay < GlobalSettings.CurrentDay)
+            if (r.returnedDay == 0 && r.Renter.Identificator == userId)
             {
                 result.Append("Device: " + r.Device + "Return day: " + r.returnDay + " Fee: " + r.LateFee + "\n");
             }

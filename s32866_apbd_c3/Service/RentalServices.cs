@@ -56,7 +56,7 @@ public class RentalServices
         
         foreach (Rental r in GlobalState.Rentals)
         {
-            if (!r.Device.Equals(equipment) || !r.returnedDay.Equals(null))
+            if (!r.Device.Equals(equipment) && !r.returnedDay.Equals(null))
             {
                 r.Return();
                 //TODO!! THROW UI FEE
@@ -96,7 +96,7 @@ public class RentalServices
     {
         if (user.UserType == UserType.Student)
         {
-            if (CurrentRentals(user) > GlobalSettings.StudentMaxRentals)
+            if (CurrentRentals(user) >= GlobalSettings.StudentMaxRentals)
             {
                 return true;
             }
@@ -106,7 +106,7 @@ public class RentalServices
 
         else
         {
-            if (CurrentRentals(user) > GlobalSettings.EmployeeMaxRentals)
+            if (CurrentRentals(user) >= GlobalSettings.EmployeeMaxRentals)
             {
                 return true;
             }
