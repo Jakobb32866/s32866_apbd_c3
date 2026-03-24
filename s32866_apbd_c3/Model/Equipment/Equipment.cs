@@ -6,13 +6,13 @@ public abstract class Equipment
     
     public int Identificator { get; }
     public string Name { get; }
-    public bool Available { get; set; }
+    public EquipmentStatus Avaiability { get; set; }
 
     protected Equipment(string name)
     {
         Identificator = SetIdentyficator();
         Name = name;
-        Available = true;
+        Avaiability = EquipmentStatus.Available;
     }
 
     private int SetIdentyficator()

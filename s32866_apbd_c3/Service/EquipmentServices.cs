@@ -1,6 +1,7 @@
 using System.Text;
 using s32866_apbd_c3.Config;
 using s32866_apbd_c3.Model.Equipment;
+using s32866_apbd_c3.Model.Rental;
 
 namespace s32866_apbd_c3.Service;
 
@@ -27,7 +28,7 @@ public class EquipmentServices
         foreach (Equipment e in GlobalState.Equipments)
         {
             result.Append("Id:" + e.Identificator + " Type: " + e.GetType() + " Name: " + e.Name + " Available: " +
-                          e.Available + "\n");
+                          e.Avaiability + "\n");
         }
         return result.ToString();
     }
@@ -36,13 +37,39 @@ public class EquipmentServices
     {
         StringBuilder result = new StringBuilder();
         foreach (Equipment e in GlobalState.Equipments)
-            if (e.Available)
+            if (e.Avaiability == EquipmentStatus.Available)
             {
                 {
                     result.Append("Id:" + e.Identificator + " Type: " + e.GetType() + " Name: " + e.Name + " Available: " +
-                                  e.Available + "\n");
+                                  e.Avaiability + "\n");
                 }
             }
         return result.ToString();
+    }
+
+    public static void SendEquipmentToService(int equipmentId)
+    {
+        Equipment equipment = GlobalState.Equipments.Find(e => e.Identificator == equipmentId);
+        
+        if (equipment == null)
+        {
+            //TODO!!! THROW UI ERR
+            return;
+        }
+        
+        equipment.Avaiability = EquipmentStatus.inService;
+    }
+    
+    public static void GetEquipmentFromService(int equipmentId)
+    {
+        Equipment equipment = GlobalState.Equipments.Find(e => e.Identificator == equipmentId);
+        
+        if (equipment == null)
+        {
+            //TODO!!! THROW UI ERR
+            return;
+        }
+        
+        equipment.Avaiability = EquipmentStatus.Available;
     }
 }

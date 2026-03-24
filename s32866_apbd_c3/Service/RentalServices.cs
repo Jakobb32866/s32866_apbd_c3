@@ -24,7 +24,13 @@ public class RentalServices
             return;
         }
 
-        if (equipment.Available == false)
+        if (equipment.Avaiability == EquipmentStatus.Rented)
+        {
+            //TODO!!! THROW UI ERR
+            return;
+        }
+        
+        if (equipment.Avaiability == EquipmentStatus.inService)
         {
             //TODO!!! THROW UI ERR
             return;
@@ -59,6 +65,31 @@ public class RentalServices
     }
     
 
+    public static string GenerateReport()
+    {
+        int totalEquipment = GlobalState.Equipments.Count;
+        int availableEquipment = GlobalState.Equipments.Count(e => e.Avaiability == EquipmentStatus.Available);
+        int activeRentals = GlobalState.Rentals.Count(r => r.returnedDay == 0);
+        int overdueRentals = GlobalState.Rentals.Count(r => 
+            r.returnedDay == 0 && GlobalSettings.CurrentDay > r.returnDay);
+        int totalFees = GlobalState.Rentals.Sum(r => r.LateFee);
+
+        return $"""
+                ===== RAPORT WYPOŻYCZALNI =====
+                Dzień systemu:        {GlobalSettings.CurrentDay}
+
+                Sprzęt:
+                  Łącznie:            {totalEquipment}
+                  Dostępny:           {availableEquipment}
+                  Niedostępny:        {totalEquipment - availableEquipment}
+
+                Wypożyczenia:
+                  Aktywne:            {activeRentals}
+                  Przeterminowane:    {overdueRentals}
+                  Łączne kary (PLN):  {totalFees}
+                ==============================
+                """;
+    }
 
 
     private static bool IsOverLimit(User user)

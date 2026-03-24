@@ -21,12 +21,12 @@ public class Rental
         returnDay = rentedDay + GlobalSettings.RentalTime;
         Renter = user;
         Device = equipment;
-        Device.Available = false;
+        Device.Avaiability = EquipmentStatus.Rented;
     }
 
     public void Return()
     {
-        Device.Available = true;
+        Device.Avaiability = EquipmentStatus.Available;
         returnedDay = GlobalSettings.CurrentDay;
         if (returnedDay - returnDay > 0)
         {
