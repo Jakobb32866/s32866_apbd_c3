@@ -33,7 +33,7 @@ public class UserServices
         StringBuilder result = new StringBuilder();
         foreach (Rental r in GlobalState.Rentals)
         {
-            if (r.returnedDay == null)
+            if (r.returnedDay == 0 && r.Renter.Identificator == userId)
             {
                 result.Append("Device: " + r.Device + "Return day: " + r.returnDay + " Fee: " + r.LateFee + "\n");
             }
@@ -41,14 +41,14 @@ public class UserServices
         return result.ToString();
     }
 
-    public static string ShowOverdueUserRentals(int userId)
+    public static string ShowOverdueRentals()
     {
         StringBuilder result = new StringBuilder();
         foreach (Rental r in GlobalState.Rentals)
         {
-            if (r.returnedDay == 0 && r.Renter.Identificator == userId)
+            if (r.returnedDay == 0)
             {
-                result.Append("Device: " + r.Device + "Return day: " + r.returnDay + " Fee: " + r.LateFee + "\n");
+                result.Append("Device: " + r.Device + " User: " + r.Renter + " Return day: " + r.returnDay + " Fee: " + r.LateFee + "\n");
             }
         }
         return result.ToString();
